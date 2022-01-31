@@ -3,6 +3,12 @@
 
  // game loop (request animation, set interval, set timeout(gets quicker the more food you eat))
 
+ const startButton = document.getElementById("startButton")
+ startButton.onclick = () => {
+    startButton.remove();
+    drawGame();
+ }
+
  let speed = 7;
  let score = 0;
 
@@ -77,9 +83,13 @@ function isGameOver(){
     }
 
     if (gameOver) {
-        ctx.fillStyle = "white";
+        ctx.fillStyle = "black";
         ctx.font = "50px Verdana";
         ctx.fillText("GAME OVER!!!", canvas.width / 18, canvas.height / 2)
+    }
+
+    if (gameOver === true) {
+        
     }
 
     return gameOver;
@@ -92,8 +102,9 @@ function isGameOver(){
  }
 
  function clearScreen(){ // to "game.js"
-     ctx.fillStyle = 'black';
-     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    ctx.fillStyle = '#0D3505';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
  }
 
  function drawSnake() { // to "snake.js"
@@ -162,4 +173,4 @@ function isGameOver(){
     }
  }
 
- drawGame();
+ //drawGame();

@@ -1,1 +1,0 @@
-const glupSound = new Audio("../sounds/glup.mp3")
