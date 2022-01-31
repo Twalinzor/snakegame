@@ -2,12 +2,24 @@
  const ctx = canvas.getContext("2d")
 
  // game loop (request animation, set interval, set timeout(gets quicker the more food you eat))
+ 
+ // const tryAgain = document.getElementById("tryAgain").style.visibility = "hidden";
+
+ /*function again(){
+    document.getElementById("tryAgain").style.visibility = "visible";
+    tryAgain.onclick = () => {
+            drawGame();
+          }      
+  }*/
+
 
  const startButton = document.getElementById("startButton")
  startButton.onclick = () => {
     startButton.remove();
     drawGame();
  }
+
+ let gameOver = false;
 
  let speed = 7;
  let score = 0;
@@ -35,6 +47,7 @@
 
 
  function drawGame () { // to "game.js"
+    bgMusic.play();
     changeSnakePosition(); // to "snake.js"
      let result = isGameOver();
      if(result){
@@ -58,8 +71,8 @@
 }
 
 function isGameOver(){
-    let gameOver = false;
-
+    // let gameOver = false;
+    
     if(ySpeed === 0 && xSpeed === 0){
         return false;
     }
@@ -83,13 +96,26 @@ function isGameOver(){
     }
 
     if (gameOver) {
-        ctx.fillStyle = "black";
-        ctx.font = "50px Verdana";
-        ctx.fillText("GAME OVER!!!", canvas.width / 18, canvas.height / 2)
-    }
+        //document.getElementById("tryAgain").style.visibility = "visible";
+       bgMusic.pause() 
+       let tryButton = document.querySelector(".hidden")
+       tryButton.classList.toggle("hidden")
+       tryButton.onclick = () =>{
+        tryButton.classList.add("hidden")
+        location.reload()
 
-    if (gameOver === true) {
-        
+       }; 
+   
+ 
+ 
+           
+        // tryAgain.onclick = () => {
+        //     document.getElementById("tryAgain").style.visibility = "hidden";
+        //     drawGame(); 
+        //       } 
+        /* ctx.fillStyle = "black";
+        ctx.font = "50px Verdana";
+        ctx.fillText("GAME OVER!!!", canvas.width / 18, canvas.height / 2) */
     }
 
     return gameOver;
@@ -103,7 +129,7 @@ function isGameOver(){
 
  function clearScreen(){ // to "game.js"
     
-    ctx.fillStyle = '#0D3505';
+    ctx.fillStyle = '#12240F';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
  }
 

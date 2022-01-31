@@ -25,7 +25,12 @@ canvas{
     margin: 0;
     font-family: monospace;
     text-align: center;
+    background-color: lightsteelblue;
 }
+.hidden{
+    visibility: hidden;
+}
+
 
 div {
     display: flex;
