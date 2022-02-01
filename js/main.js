@@ -9,8 +9,14 @@
     drawGame();
  }
 
+ const bgMusic = new Audio("./sounds/bgmusic1.mp3");
+ const glup = new Audio("./sounds/glup1.mp3");
+
  let gameOver = false;
 
+ //const glupSound = new Audio("../sounds/glup1.mp3");
+ //const bgMusic = new Audio("../sounds/bgmusic1.mp3");
+ 
  let speed = 7;
  let score = 0;
 
@@ -48,6 +54,7 @@
     drawFood(); 
     drawSnake(); 
     drawScore();
+    
 
     if(score > 2){
         speed = 11;
@@ -138,7 +145,7 @@ function isGameOver(){
          foodY = Math.floor(Math.random() * squareCount);
          snakeTailLength ++;
          score ++;
-         glupSound.play();
+         glup.play();
      }
  }
 
