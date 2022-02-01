@@ -1,17 +1,7 @@
  const canvas = document.getElementById("canvas")
  const ctx = canvas.getContext("2d")
 
- // game loop (request animation, set interval, set timeout(gets quicker the more food you eat))
- 
- // const tryAgain = document.getElementById("tryAgain").style.visibility = "hidden";
-
- /*function again(){
-    document.getElementById("tryAgain").style.visibility = "visible";
-    tryAgain.onclick = () => {
-            drawGame();
-          }      
-  }*/
-
+ // game loop (gets quicker the more food you eat))
 
  const startButton = document.getElementById("startButton")
  startButton.onclick = () => {
@@ -35,28 +25,28 @@
  let foodX = 5;
  let foodY = 5;
 
- class SnakeParts{ // to "snake.js"
+ class SnakeParts{ // ??
      constructor(x, y) {
          this.x = x;
          this.y = y;
      }
  }
 
- const snakeParts = []; // to "snake.js"
- let snakeTailLength = 2;
+ const snakeParts = []; // the snek
+ let snakeTailLength = 2; // at start
 
 
- function drawGame () { // to "game.js"
+ function drawGame () { // Draw game function spam
     bgMusic.play();
-    changeSnakePosition(); // to "snake.js"
+    changeSnakePosition(); 
      let result = isGameOver();
      if(result){
          return;
      }
-    clearScreen(); // to "game.js"
+    clearScreen(); 
     checkFoodCollision();       
-    drawFood(); // to "snake.js"
-    drawSnake(); // to "food.js"
+    drawFood(); 
+    drawSnake(); 
     drawScore();
 
     if(score > 2){
@@ -71,7 +61,6 @@
 }
 
 function isGameOver(){
-    // let gameOver = false;
     
     if(ySpeed === 0 && xSpeed === 0){
         return false;
@@ -95,8 +84,7 @@ function isGameOver(){
         }
     }
 
-    if (gameOver) {
-        //document.getElementById("tryAgain").style.visibility = "visible";
+    if (gameOver) { // Turn music off and restart game and "restart button"
        bgMusic.pause() 
        let tryButton = document.querySelector(".hidden")
        tryButton.classList.toggle("hidden")
@@ -105,57 +93,46 @@ function isGameOver(){
         location.reload()
 
        }; 
-   
- 
- 
-           
-        // tryAgain.onclick = () => {
-        //     document.getElementById("tryAgain").style.visibility = "hidden";
-        //     drawGame(); 
-        //       } 
-        /* ctx.fillStyle = "black";
-        ctx.font = "50px Verdana";
-        ctx.fillText("GAME OVER!!!", canvas.width / 18, canvas.height / 2) */
     }
 
-    return gameOver;
+    return gameOver; // self explanatory
 }
 
- function drawScore(){
-     ctx.fillStyle = 'white';
+ function drawScore(){ // Score at the corner
+     ctx.fillStyle = 'pink';
      ctx.font = '12px verdana'
      ctx.fillText("Score: " + score, canvas.width - 65, 15)
  }
 
- function clearScreen(){ // to "game.js"
+ function clearScreen(){ // self explanatory
     
-    ctx.fillStyle = '#12240F';
+    ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
  }
 
- function drawSnake() { // to "snake.js"
-     ctx.fillStyle= 'yellow';
+ function drawSnake() { // Drawing snek on canvas
+     ctx.fillStyle= '#FF3C3C';
      for(let i = 0; i < snakeParts.length; i++) {
          let part = snakeParts[i];
          ctx.fillRect(part.x * squareCount, part.y * squareCount, squareSize, squareSize)
      }
 
-     snakeParts.push(new SnakeParts(snakeHeadX, snakeHeadY));
+     snakeParts.push(new SnakeParts(snakeHeadX, snakeHeadY)); // adding snek parts
      while (snakeParts.length > snakeTailLength) {
          snakeParts.shift();
      }
 
-     ctx.fillStyle = 'blue';
+     ctx.fillStyle = 'white'; // snek head
      ctx.fillRect(snakeHeadX * squareCount, snakeHeadY * squareCount, squareSize, squareSize);
  }
 
- function drawFood(){
-     ctx.fillStyle = 'red';
+ function drawFood(){ // food
+     ctx.fillStyle = 'orange';
      ctx.fillRect(foodX * squareCount, foodY * squareCount, squareSize, squareSize);
  }
 
 
- function checkFoodCollision(){
+ function checkFoodCollision(){ // when eats, play glup sound
      if(foodX === snakeHeadX && foodY === snakeHeadY) {
          foodX = Math.floor(Math.random() * squareCount);
          foodY = Math.floor(Math.random() * squareCount);
@@ -166,14 +143,14 @@ function isGameOver(){
  }
 
 
- function changeSnakePosition() {
+ function changeSnakePosition() { // snek too fast
      snakeHeadX = snakeHeadX + xSpeed;
      snakeHeadY = snakeHeadY + ySpeed;
  }
 
  document.body.addEventListener('keydown', keyDown);
 
- function keyDown(event){
+ function keyDown(event){ // Movement stuff
      if(event.keyCode === 38) { // KEY UP
         if(ySpeed === 1) return; // PREVENTS FROM CRUSHING INTO OWN BODY
          ySpeed = -1;
@@ -199,4 +176,4 @@ function isGameOver(){
     }
  }
 
- //drawGame();
+
