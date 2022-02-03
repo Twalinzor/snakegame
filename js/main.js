@@ -107,7 +107,7 @@ function isGameOver(){
 
  function drawScore(){ // Score at the corner
      ctx.fillStyle = 'white';
-     ctx.font = '12px verdana'
+     ctx.font = '12px Comfortaa'
      ctx.fillText("Score: " + score, canvas.width - 65, 15)
  }
 
