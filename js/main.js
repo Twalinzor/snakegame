@@ -21,7 +21,7 @@
  let score = 0;
 
  let squareCount = 20;
- let squareSize = canvas.width / squareCount - 2; // in case we want to change size later
+ let squareSize = canvas.width / squareCount - 2; 
  let snakeHeadX = 10; 
  let snakeHeadY = 10;
 
@@ -106,7 +106,7 @@ function isGameOver(){
 }
 
  function drawScore(){ // Score at the corner
-     ctx.fillStyle = 'pink';
+     ctx.fillStyle = 'white';
      ctx.font = '12px verdana'
      ctx.fillText("Score: " + score, canvas.width - 65, 15)
  }
@@ -118,7 +118,7 @@ function isGameOver(){
  }
 
  function drawSnake() { // Drawing snek on canvas
-     ctx.fillStyle= '#FF3C3C';
+     ctx.fillStyle= '#FDBDFF';
      for(let i = 0; i < snakeParts.length; i++) {
          let part = snakeParts[i];
          ctx.fillRect(part.x * squareCount, part.y * squareCount, squareSize, squareSize)
@@ -129,12 +129,12 @@ function isGameOver(){
          snakeParts.shift();
      }
 
-     ctx.fillStyle = 'white'; // snek head
+     ctx.fillStyle = '#C304C8 '; // snek head
      ctx.fillRect(snakeHeadX * squareCount, snakeHeadY * squareCount, squareSize, squareSize);
  }
 
  function drawFood(){ // food
-     ctx.fillStyle = 'orange';
+     ctx.fillStyle = '#0030FC';
      ctx.fillRect(foodX * squareCount, foodY * squareCount, squareSize, squareSize);
  }
 
