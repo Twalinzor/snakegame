@@ -158,6 +158,7 @@ function isGameOver(){
  document.body.addEventListener('keydown', keyDown);
 
  function keyDown(event){ // Movement stuff
+    event.preventDefault()
      if(event.keyCode === 38) { // KEY UP
         if(ySpeed === 1) return; // PREVENTS FROM CRUSHING INTO OWN BODY
          ySpeed = -1;
